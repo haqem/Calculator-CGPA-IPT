@@ -29,8 +29,8 @@ Make sure the value 9 is changed to the course you want.
 **Example**
 
 ```d
-If you want 9 course, duplicate the last table of *Current Semester* and change to *frmGrade9* and 
-form *Average* change to be *frmGrade10*
+If you want 9 course, duplicate the last table of Current Semester and change to frmGrade9 and 
+form Average change to be frmGrade10
 ```
 
 1. Calculation based on Universiti Teknologi MARA (UiTM) Grade. 
