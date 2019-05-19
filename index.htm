@@ -1,0 +1,387 @@
+<style>
+    .hqm {
+        cursor: not-allowed;
+    }
+
+    input {
+        text-align: center;
+    }
+
+    .alert {
+        padding: 20px;
+        background-color: #ff9900;
+        color: white;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .closebtn:hover {
+        color: black;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Grade calculation based on KPTM as default please read documentation <a
+        href="https://github.com/haqem/Calculator-CGPA-IPT">Here</a>
+</div>
+<table align="center" border="1" width="100%" style="border-collapse:collapse;" cellpadding="2">
+    <form method="post" name="frmGrade0">
+        <tr align="center" height="35">
+            <td>Credit Hours</td>
+            <td>Current GPA</td>
+            <td>Current Grade</td>
+            <td></td>
+        </tr>
+        <tr align="center" height="30">
+            <td><input type="text" name="hqcredithours" size="6" onChange="computeField(this)"></td>
+            <td><input type="text" name="hqgrade" size="6" onChange="computeForm(this.form)"></td>
+            <td><input type="text" name="hqgradepoints" size="6" onChange="computeField(this)"></td>
+            <td><input type="reset" class="smaller" onClick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+</table>
+
+<h4>Current Semester</h4>
+<table align="center" border="1" width="100%" style="border-collapse:collapse;" cellpadding="2">
+    <form method="post" name="frmGrade1">
+        <tr align="center" height="35">
+            <td>Course</td>
+            <td>Grade</td>
+            <td>Pointer</td>
+            <td>Credit Hours</td>
+            <td>Grade Points</td>
+            <td></td>
+        </tr>
+        <tr align="center" height="30">
+            <td>Course 1</td>
+            <td>
+                <select name="hqgrade"
+                    onchange="computeForm(this.form); pointers(1, this.options[this.selectedIndex].value)">
+                    <option value="">Select</option>
+                    <option value="4.00">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.00">B</option>
+                    <option value="2.75">B-</option>
+                    <option value="2.50">C+</option>
+                    <option value="2.00">C</option>
+                    <option value="1.75">C-</option>
+                    <option value="1.50">D+</option>
+                    <option value="1.00">D</option>
+                    <option value="0.00">F</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="pointergrade" size="6" onchange="computeField(this)" readonly></td>
+            <td>
+                <select name="hqcredithours" onchange="computeField(this)">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="hqgradepoints" size="6" onchange="computeField(this)" readonly>
+            </td>
+            <td><input type="reset" class="smaller" onclick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+
+    <form method="post" name="frmGrade2">
+        <tr align="center" height="30">
+            <td>Course 2</td>
+            <td>
+                <select name="hqgrade"
+                    onchange="computeForm(this.form); pointers(2, this.options[this.selectedIndex].value)">
+                    <option value="">Select</option>
+                    <option value="4.00">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.00">B</option>
+                    <option value="2.75">B-</option>
+                    <option value="2.50">C+</option>
+                    <option value="2.00">C</option>
+                    <option value="1.75">C-</option>
+                    <option value="1.50">D+</option>
+                    <option value="1.00">D</option>
+                    <option value="0.00">F</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="pointergrade" size="6" onchange="computeField(this)" readonly></td>
+            <td>
+                <select name="hqcredithours" onchange="computeField(this)">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="hqgradepoints" size="6" onchange="computeField(this)" readonly>
+            </td>
+            <td><input type="reset" class="smaller" onclick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+    <form method="post" name="frmGrade3">
+        <tr align="center" height="30">
+            <td>Course 3</td>
+            <td>
+                <select name="hqgrade"
+                    onchange="computeForm(this.form); pointers(3, this.options[this.selectedIndex].value)">
+                    <option value="">Select</option>
+                    <option value="4.00">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.00">B</option>
+                    <option value="2.75">B-</option>
+                    <option value="2.50">C+</option>
+                    <option value="2.00">C</option>
+                    <option value="1.75">C-</option>
+                    <option value="1.50">D+</option>
+                    <option value="1.00">D</option>
+                    <option value="0.00">F</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="pointergrade" size="6" onchange="computeField(this)" readonly></td>
+            <td>
+                <select name="hqcredithours" onchange="computeField(this)">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="hqgradepoints" size="6" onchange="computeField(this)" readonly>
+            </td>
+            <td><input type="reset" class="smaller" onclick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+    <form method="post" name="frmGrade4">
+        <tr align="center" height="30">
+            <td>Course 4</td>
+            <td>
+                <select name="hqgrade"
+                    onchange="computeForm(this.form); pointers(4, this.options[this.selectedIndex].value)">
+                    <option value="">Select</option>
+                    <option value="4.00">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.00">B</option>
+                    <option value="2.75">B-</option>
+                    <option value="2.50">C+</option>
+                    <option value="2.00">C</option>
+                    <option value="1.75">C-</option>
+                    <option value="1.50">D+</option>
+                    <option value="1.00">D</option>
+                    <option value="0.00">F</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="pointergrade" size="6" onchange="computeField(this)" readonly></td>
+            <td>
+                <select name="hqcredithours" onchange="computeField(this)">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="hqgradepoints" size="6" onchange="computeField(this)" readonly>
+            </td>
+            <td><input type="reset" class="smaller" onclick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+    <form method="post" name="frmGrade5">
+        <tr align="center" height="30">
+            <td>Course 5</td>
+            <td>
+                <select name="hqgrade"
+                    onchange="computeForm(this.form); pointers(5, this.options[this.selectedIndex].value)">
+                    <option value="">Select</option>
+                    <option value="4.00">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.00">B</option>
+                    <option value="2.75">B-</option>
+                    <option value="2.50">C+</option>
+                    <option value="2.00">C</option>
+                    <option value="1.75">C-</option>
+                    <option value="1.50">D+</option>
+                    <option value="1.00">D</option>
+                    <option value="0.00">F</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="pointergrade" size="6" onchange="computeField(this)" readonly></td>
+            <td>
+                <select name="hqcredithours" onchange="computeField(this)">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="hqgradepoints" size="6" onchange="computeField(this)" readonly>
+            </td>
+            <td><input type="reset" class="smaller" onclick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+    <form method="post" name="frmGrade6">
+        <tr align="center" height="30">
+            <td>Course 6</td>
+            <td>
+                <select name="hqgrade"
+                    onchange="computeForm(this.form); pointers(6, this.options[this.selectedIndex].value)">
+                    <option value="">Select</option>
+                    <option value="4.00">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.00">B</option>
+                    <option value="2.75">B-</option>
+                    <option value="2.50">C+</option>
+                    <option value="2.00">C</option>
+                    <option value="1.75">C-</option>
+                    <option value="1.50">D+</option>
+                    <option value="1.00">D</option>
+                    <option value="0.00">F</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="pointergrade" size="6" onchange="computeField(this)" readonly></td>
+            <td>
+                <select name="hqcredithours" onchange="computeField(this)">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="hqgradepoints" size="6" onchange="computeField(this)" readonly>
+            </td>
+            <td><input type="reset" class="smaller" onclick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+    <form method="post" name="frmGrade7">
+        <tr align="center" height="30">
+            <td>Course 7</td>
+            <td>
+                <select name="hqgrade"
+                    onchange="computeForm(this.form); pointers(7, this.options[this.selectedIndex].value)">
+                    <option value="">Select</option>
+                    <option value="4.00">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.00">B</option>
+                    <option value="2.75">B-</option>
+                    <option value="2.50">C+</option>
+                    <option value="2.00">C</option>
+                    <option value="1.75">C-</option>
+                    <option value="1.50">D+</option>
+                    <option value="1.00">D</option>
+                    <option value="0.00">F</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="pointergrade" size="6" onchange="computeField(this)" readonly></td>
+            <td>
+                <select name="hqcredithours" onchange="computeField(this.form)">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="hqgradepoints" size="6" onchange="computeField(this)" readonly>
+            </td>
+            <td><input type="reset" class="smaller" onclick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+    <form method="post" name="frmGrade8">
+        <tr align="center" height="30">
+            <td>Course 8</td>
+            <td>
+                <select name="hqgrade"
+                    onchange="computeForm(this.form); pointers(8, this.options[this.selectedIndex].value)">
+                    <option value="" selected="">Select</option>
+                    <option value="4.00">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.00">B</option>
+                    <option value="2.75">B-</option>
+                    <option value="2.50">C+</option>
+                    <option value="2.00">C</option>
+                    <option value="1.75">C-</option>
+                    <option value="1.50">D+</option>
+                    <option value="1.00">D</option>
+                    <option value="0.00">F</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="pointergrade" size="6" onchange="computeField(this)" readonly></td>
+            <td>
+                <select name="hqcredithours" onchange="computeForm(this.form)">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+            <td><input class="hqm" type="text" name="hqgradepoints" size="6" onchange="computeField(this)" readonly>
+            </td>
+            <td><input type="reset" class="smaller" onclick="clearForm(this.form)" value="Reset"></td>
+        </tr>
+    </form>
+</table><br>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+<a class="github-fork-ribbon" href="https://github.com/haqem" data-ribbon="Fork me on GitHub"
+    title="Fork me on GitHub"></a>
+<table align="center" border="1" width="100%" style="border-collapse:collapse;" cellpadding="2">
+    <form method="post" name="frmGrade9">
+        <tr align="center" height="35">
+            <td>Total Grade</td>
+            <td>Credit Hours</td>
+            <!-- <td>GPA</td> -->
+            <td>CGPA</td>
+            <td></td>
+        </tr>
+        <tr align="center" height="30">
+            <td><input readonly type="text" name="hqgradepoints" size="8"></td>
+            <td><input readonly type="text" name="hqcredithours" size="1"></td>
+            <!-- <td><input readonly type="text" name="pointergrade" size="8" onchange="computePointer(this)"></td> -->
+            <td><input readonly type="text" name="hqgrade" size="8"></td>
+            <td><input type="button" value="Calculate" onclick="computesumForm(this.form)"> <input TYPE="reset"
+                    class="smaller" onClick="clearForm(this.form)" VALUE="Reset"></td>
+        </tr>
+    </form>
+</table>
