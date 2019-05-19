@@ -5,6 +5,8 @@ This system helps you to calculate a GPA/CGPA. Available grade system for Univer
 ```
 Drop all file into server.
 ```
+Before install into your server please make sure to change or select Grade first on ```select name="hqgrade"``` and change the value of each Option in index.htm file.
+
 ## Usage
 
 1. Calculation based on Universiti Teknologi MARA (UiTM) Grade. 
