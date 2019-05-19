@@ -5,7 +5,7 @@ This system helps you to calculate a GPA/CGPA. Available grade system for Univer
 ```
 Drop all file into server.
 ```
-Before install into your server please make sure to change or select Grade first on ```select name="hqgrade"``` and change the value of each Option in index.htm file.
+Before install into your server please make sure to change or select Grade first on ```select name="hqgrade"``` and change the value of each Option in index.htm file. Please ensure that you follow the point grade below. ```Note: Point Grade = Value in index.htm```
 
 ## Usage
 
