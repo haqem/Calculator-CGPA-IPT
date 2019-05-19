@@ -9,6 +9,30 @@ Before install into your server please make sure to change or select Grade first
 
 ## Usage
 
+* Form Name
+  - Last Semester as ```frmGrade0```
+  - Current Semester as ```frmGrade1 - frmGrade8```
+  - Average as ```frmGrade9```
+
+* For the safety, please don't change the form Last semester as ```frmGrade0``` default.
+
+* If you have more than 8 course If you want to add more than 8 courses, be sure the JavaScript section
+```javascript 
+computesumForm ()
+``` 
+and change on line 39 
+```javascript 
+for (var i = 0; i < 9; i++) {
+```
+Make sure the value 9 is changed to the course you want. 
+
+**Example**
+
+```d
+If you want 9 course, duplicate the last table of *Current Semester* and change to *frmGrade9* and 
+form *Average* change to be *frmGrade10*
+```
+
 1. Calculation based on Universiti Teknologi MARA (UiTM) Grade. 
 
 | Grade  | Mark | Point Grade | Status |
@@ -63,7 +87,7 @@ Before install into your server please make sure to change or select Grade first
 | E- | 20-29 | 0.33 | Gagal |
 | F  | 0-19  | 0.00 | Gagal |
 
-* This Grade can be change on ```select > name="grade" > value```
+* This Grade can be change on ```select > name="hqgrade" > value```
 
 ## Have 3 Table in This System
 
